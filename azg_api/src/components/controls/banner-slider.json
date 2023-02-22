@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_controls_banner_sliders",
+  "info": {
+    "displayName": "Banner Slider",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "caption": {
+      "displayName": "Banner Slider Caption",
+      "type": "component",
+      "repeatable": false,
+      "component": "controls.banner-slider-caption"
+    },
+    "boxes": {
+      "displayName": "Banner Slider Box",
+      "type": "component",
+      "repeatable": true,
+      "component": "controls.banner-slider-box",
+      "max": 2
+    }
+  }
+}

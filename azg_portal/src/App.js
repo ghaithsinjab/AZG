@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import { URL_CONFIG } from "./utils/config.utils";
 import { getCurrentNav, setSEO } from "./utils/helper.utils";
@@ -7,9 +8,12 @@ import { getCurrentNav, setSEO } from "./utils/helper.utils";
 import Header from "./components/layout/header/header.component";
 import Footer from "./components/layout/footer/footer.component";
 import Home from "./templates/home/home.template";
+import Search from "./templates/search/search.template";
 
 import { useNav } from "./hooks/nav/nav.hooks";
 import { selectNav } from "./store/nav/nav.selectors";
+
+import "react-toastify/scss/main.scss";
 
 const AppUtils = {
   /**
@@ -61,15 +65,25 @@ function App() {
   //load nav
   useNav();
   const nav = useSelector(selectNav);
-  console.log(nav);
   const siteRoutes = AppUtils.getRoutes(nav);
   const currentNav = getCurrentNav(nav);
   currentNav && setSEO(currentNav.title);
   return (
-    <div className="App clearfix" id="wrapper">
-      <Header />
-      <Routes>{siteRoutes}</Routes>
-      <Footer />
+    <div className="App">
+      <div className="clearfix" id="wrapper">
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          theme="colored"
+        />
+        <Header />
+        <Routes>
+          {siteRoutes}
+          <Route path="/search" element={<Search />} />
+        </Routes>
+        <Footer />
+      </div>
+      <div id="gotoTop" className="icon-angle-up"></div>
     </div>
   );
 }

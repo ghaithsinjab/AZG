@@ -1,5 +1,14 @@
+import Slider from "../../components/widgets/slider/slider.component";
+import {useHomePage} from '../../hooks/home-page/home-page.hooks';
+
 const Home = ()  => {
-    return (<div></div>)
+    const homePage = useHomePage();
+    console.log(homePage);
+    return (
+        <>
+            <Slider slides={homePage?.attributes?.slider} />
+        </>
+    )
 }
 
 export default Home;

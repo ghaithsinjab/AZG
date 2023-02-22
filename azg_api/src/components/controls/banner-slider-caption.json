@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_controls_banner_slider_captions",
+  "info": {
+    "displayName": "Banner Slider Caption"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "details": {
+      "type": "string"
+    },
+    "link_url": {
+      "type": "string"
+    }
+  }
+}

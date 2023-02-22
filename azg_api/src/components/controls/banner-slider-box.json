@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_controls_banner_slider_boxes",
+  "info": {
+    "displayName": "Banner Slider Box"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  }
+}
