@@ -17,6 +17,21 @@
       "type": "component",
       "repeatable": true,
       "component": "controls.banner-slider"
+    },
+    "about_us": {
+      "displayName": "Section Content",
+      "type": "component",
+      "repeatable": false,
+      "component": "controls.section-content"
+    },
+    "business_section_title": {
+      "type": "string"
+    },
+    "business_section_url": {
+      "type": "string"
+    },
+    "business_section_link_title": {
+      "type": "string"
     }
   }
 }
