@@ -1,0 +1,30 @@
+.scale-item {
+    overflow: hidden;
+    min-height: 300px;
+
+    > a {
+        display: block;
+        height: 100%;
+        position: relative;
+
+        > .scale-bg-img, > .video-area {
+            height: 100% !important;
+        }
+
+        > h3 {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            background-color: rgb(55 46 44 / 90%);
+        }
+    }
+
+    &.video-item {
+        > a {
+            > h3 {
+                padding: 10px 30px !important;
+            }
+        }
+    }
+}

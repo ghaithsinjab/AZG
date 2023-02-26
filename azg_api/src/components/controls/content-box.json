@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_controls_content_boxes",
+  "info": {
+    "displayName": "Content Box",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

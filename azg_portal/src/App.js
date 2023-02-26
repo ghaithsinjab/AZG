@@ -1,19 +1,19 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { lazy, useEffect } from "react";
 
 import { URL_CONFIG } from "./utils/config.utils";
 import { getCurrentNav, setSEO } from "./utils/helper.utils";
 
 import Header from "./components/layout/header/header.component";
 import Footer from "./components/layout/footer/footer.component";
-import Home from "./templates/home/home.template";
-import Search from "./templates/search/search.template";
 
 import { useNav } from "./hooks/nav/nav.hooks";
 import { selectNav } from "./store/nav/nav.selectors";
 
-import "react-toastify/scss/main.scss";
+const Home = lazy(() => import("./templates/home/home.template"));
+const Search = lazy(() => import("./templates/search/search.template"));
 
 const AppUtils = {
   /**
@@ -64,10 +64,28 @@ const AppUtils = {
 function App() {
   //load nav
   useNav();
+  document.getElementsByClassName("loader-area")[0]?.remove();
   const nav = useSelector(selectNav);
   const siteRoutes = AppUtils.getRoutes(nav);
   const currentNav = getCurrentNav(nav);
   currentNav && setSEO(currentNav.title);
+
+  //adjust body height
+  const adjustHeight = () => {
+    const elements = {
+      windowHeight: window.innerHeight,
+      header: document.getElementsByTagName("header")[0],
+      footer: document.getElementsByTagName("footer")[0],
+      targetElement: document.getElementsByClassName("body-content")[0],
+    };
+    const minHeight = elements.windowHeight - elements.footer.clientHeight - 6;
+    elements.targetElement.style.minHeight = `${minHeight}px`;
+  };
+
+  useEffect(() => {
+    adjustHeight();
+  }, []);
+
   return (
     <div className="App">
       <div className="clearfix" id="wrapper">
@@ -77,10 +95,12 @@ function App() {
           theme="colored"
         />
         <Header />
-        <Routes>
-          {siteRoutes}
-          <Route path="/search" element={<Search />} />
-        </Routes>
+        <div className="body-content">
+          <Routes>
+            {siteRoutes}
+            <Route path="/search" element={<Search />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
       <div id="gotoTop" className="icon-angle-up"></div>

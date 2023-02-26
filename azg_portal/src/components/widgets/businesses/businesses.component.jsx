@@ -1,14 +1,12 @@
-import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Carousel} from 'react-responsive-carousel';
-import { URL_CONFIG } from '../../../utils/config.utils';
-import {selectNav} from '../../../store/nav/nav.selectors';
-import {getNavOfType} from '../../../utils/helper.utils';
+import BusinessCard from '../business-card/business-card.component';
+import Slider from 'react-slick';
+
+import "../../../assets/slick.scss";
+import "../../../assets/slick-theme.scss";
+import "./businesses.styles.scss";
 
 const Businesses = ({title, link_title, link_url, items}) => {
-    const nav = useSelector(selectNav);
-    const businessNavItem = getNavOfType(nav, 'Services');
-    const businessUrl = businessNavItem.path || '';
     return (
         <>
         {
@@ -31,18 +29,20 @@ const Businesses = ({title, link_title, link_url, items}) => {
                         </div>
                         <div className="row">
                             <div className="col-12">
-                                <Carousel showThumbs={false}>
+                                <Slider dots={true} infinite={true} slidesToShow={3} lazyLoad="progressive" responsive={[
                                     {
-                                        items?.map(item => (
-                                            <div className="scale-item" key={item.id}>
-                                                <h3 className='text-center'>{item.attributes.title}</h3>
-                                                <div className='scale-bg-img' style={{backgroundImage: `url('${URL_CONFIG.assetsURL}${item.attributes.image?.data?.attributes?.url}')`}}>
-                                                    <Link to={businessUrl + item.attributes.url} className="btn btn2">All Projects</Link>
-                                                </div>
-                                            </div>
-                                        ))
+                                        breakpoint: 1024,
+                                        settings: { slidesToShow: 2}
+                                    },
+                                    {
+                                        breakpoint: 500,
+                                        settings: {slidesToShow: 1}
                                     }
-                                </Carousel>
+                                ]}>
+                                    {
+                                        items?.map(item => <BusinessCard item={item.attributes} key={item.id} />)
+                                    }
+                                </Slider>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ import { store } from "./store/store.redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import "bootstrap/scss/bootstrap.scss";
+import "react-toastify/scss/main.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

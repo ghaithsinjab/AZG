@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
-import {LazyLoadImage} from 'react-lazy-load-image-component';
-import { URL_CONFIG } from '../../../utils/config.utils';
+import Image from '../../controls/image/image.component';
+import parse from 'html-react-parser';
 
 const AboutUs = ({item}) => {
     return (
@@ -14,7 +14,7 @@ const AboutUs = ({item}) => {
                                 <div className="section-title">
                                     <h3 className="fw-bold text-uppercase">{item?.title}</h3>
                                 </div>
-                                <div>{item?.content}</div>
+                                <div>{parse(item?.content)}</div>
                                 {
                                     item?.url?.length ? (<Link to={item?.url} className="btn float-end">Read More</Link>) : ('')
                                 }
@@ -22,7 +22,10 @@ const AboutUs = ({item}) => {
                             {
                                 item?.image ? (
                                     <div className="col-lg-6 align-self-center">
-                                        <LazyLoadImage src={URL_CONFIG.assetsURL + item?.image?.data?.attributes?.url} alt={item?.image?.data?.attributes?.alternativeText || ''} className="img-fluid w-100" />
+                                        <Image 
+                                            src={item?.image?.data?.attributes?.url} 
+                                            alt={item?.image?.data?.attributes?.alternativeText || ''} 
+                                            className="img-fluid w-100" />
                                     </div>
                                 ) : ('')
                             }

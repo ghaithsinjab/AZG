@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "our_businesses",
+  "info": {
+    "singularName": "our-business",
+    "pluralName": "our-businesses",
+    "displayName": "Our Business"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "page_bar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

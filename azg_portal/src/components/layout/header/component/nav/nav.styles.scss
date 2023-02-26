@@ -1,0 +1,15 @@
+.menu-item {
+    
+    a {
+        padding-right: 0px;
+    }
+
+    &.current {
+        
+        a {
+            padding-right: 15px;
+        }
+        
+    }
+
+}

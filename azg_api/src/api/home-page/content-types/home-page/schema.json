@@ -32,6 +32,16 @@
     },
     "business_section_link_title": {
       "type": "string"
+    },
+    "brief_section_title": {
+      "type": "string"
+    },
+    "briefs": {
+      "displayName": "Icon Item",
+      "type": "component",
+      "repeatable": true,
+      "component": "controls.icon-item",
+      "max": 4
     }
   }
 }

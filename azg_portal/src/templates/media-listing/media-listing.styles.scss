@@ -1,0 +1,28 @@
+.media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+
+    > div:nth-child(10n+3), > div:nth-child(10n+6) {
+        grid-row: span 2 / auto;
+    }
+}
+
+@media (max-width: 991px) {
+    .media-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        > div:nth-child(10n+3), > div:nth-child(10n+6) {
+            grid-row: auto / auto;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .media-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

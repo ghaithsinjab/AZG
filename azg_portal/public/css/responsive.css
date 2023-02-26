@@ -1,0 +1,28 @@
+@media(min-width: 992px) {
+    .slider-caption.slider-caption-center {
+        text-align: left;
+        left: -10%;
+    }
+
+    .business .owl-nav button.owl-prev {
+        left: 38% !important;
+    }
+
+    .business .owl-nav button.owl-next {
+        left: 42% !important;
+    }
+
+    .owl-nav button {
+        border-radius: 8px !important;
+        top: 90% !important;
+        opacity: 1 !important;
+        background-color: #fff !important;
+        box-shadow: 0 0 8px 1px rgb(0 0 0 / 20%);
+        border: 0 !important;
+    }
+}
+
+@media(max-width: 991px){
+    .video-area{height: 320px;}
+    .video-area iframe{height: 280px !important;}
+}

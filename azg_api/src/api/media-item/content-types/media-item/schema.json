@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_items",
+  "info": {
+    "singularName": "media-item",
+    "pluralName": "media-items",
+    "displayName": "Media Items",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "youtube": {
+      "type": "string"
+    }
+  }
+}

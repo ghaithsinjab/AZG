@@ -106,7 +106,7 @@ export const getCurrentNav = (nav) => {
   //return the home page nav link or the relevant nav item
   if (currentLocation === "/")
     return navLinks?.find((item) => item.page_role === "Home");
-  else return navLinks.find((item) => item.path === currentLocation);
+  else return navLinks?.find((item) => item.path === currentLocation);
 };
 
 /**

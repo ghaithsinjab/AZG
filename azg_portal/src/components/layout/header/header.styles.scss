@@ -1,0 +1,22 @@
+.small-menu-trigger {
+    background: none;
+    color: var(--accent-color);
+    border: none;
+}
+
+.close-small-menu-area {
+    background: none;
+    border: none;
+}
+
+.small-menu-area {
+    ul.small-menu-items.social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-fixed-alt #header {
+        position: static;
+    }
+}

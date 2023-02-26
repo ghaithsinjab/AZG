@@ -1,7 +1,8 @@
 {
   "collectionName": "components_controls_section_contents",
   "info": {
-    "displayName": "Section Content"
+    "displayName": "Section Content",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,18 +10,24 @@
       "type": "string",
       "required": true
     },
-    "content": {
-      "type": "richtext"
-    },
     "url": {
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

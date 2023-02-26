@@ -1,0 +1,93 @@
+.carousel-slider {
+
+    .control-arrow {
+        position: absolute !important;
+        cursor: pointer !important;
+        z-index: 8 !important;
+        top: 50% !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        width: 52px;
+        height: 52px;
+        border: 0 !important;
+        border-radius: 0 3px 3px 0;
+        transform: translateY(-50%);
+        transition: background-color 0.3s ease-in-out !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1 !important;
+        
+        &:hover {
+            background: rgba(0,0,0,1) !important;
+        }
+
+        &.control-prev {
+            left: 0;
+        }
+
+        &.control-next {
+            right: 0;
+        }
+    }
+}
+
+.home-slider-caption {
+    max-width: 80%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70%;
+    transform: translateY(-50%);
+    top: 50%;
+
+    .slider-caption-main {
+        text-align: left;
+        color: #f7f7f7;
+
+        .slide-count {
+            color: #f7f7f7;
+        }
+
+        h2 {
+            color: #F7F7F7;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            line-height: 1;
+            width: 80%;
+        }
+
+        p {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            
+            a {
+                border: 1px solid white;
+                padding: 13px 15px;
+                border-radius: 2rem;
+                color: #f7f7f7;
+                line-height: 1;
+                margin-left: 1rem;
+                display: inline-block;
+                transition: all 0.5s;
+
+                &:hover {
+                    background-color: #f7f7f7;
+                    color: var(--accent-color);
+                }
+            }
+        }
+    }
+
+    .slider-boxes {
+        margin-bottom: 2rem;
+        margin-top: auto;
+
+        .box-item {
+            color: #fff;
+        }
+    }
+}

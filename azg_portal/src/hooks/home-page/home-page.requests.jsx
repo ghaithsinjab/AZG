@@ -8,6 +8,8 @@ export const httpGetHomePage = async () => {
         'populate[3]': 'slider.boxes',
         'populate[4]': 'about_us',
         'populate[5]': 'about_us.image',
+        'populate[6]': 'briefs',
+        'populate[7]': 'briefs.icon',
     };
     const results = await getAPI('home-page', filters);
     return results;

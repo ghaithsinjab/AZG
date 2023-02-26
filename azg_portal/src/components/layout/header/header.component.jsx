@@ -1,15 +1,28 @@
 import {Link} from 'react-router-dom';
-import {LazyLoadImage} from 'react-lazy-load-image-component';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useRef, useState } from 'react';
 import SearchForm from './component/search-form/search-form.component';
 import SocialLinks from './component/social-links/social-links.component';
 import Nav from './component/nav/nav.component';
 
 import { SETTINGS } from '../../../utils/config.utils';
+import './header.styles.scss';
 
 const Header = () => {
+	const headerRef = useRef();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const mobileMenuTriggerClickHandler = (event) => {
+		const toggle = !isMenuOpen;
+		setIsMenuOpen(toggle);
+	}
+
+	window.addEventListener('scroll', () => {
+		if(window.scrollY > 150) headerRef.current?.classList.add('sticky-header');
+		else headerRef.current?.classList.remove('sticky-header');
+	});
     return (
-        <header id="header" className="header-size-sm bg-black">
+        <header id="header" className="header-size-sm bg-black" ref={headerRef}>
             <div className="container d-lg-block d-none">
 
                 <div className="header-row justify-content-between py-2 py-lg-3">
@@ -73,7 +86,7 @@ const Header = () => {
 						</div>
 
 						<div className="col-6">
-							<button className="small-menu-trigger float-end">
+							<button className="small-menu-trigger float-end" onClick={mobileMenuTriggerClickHandler}>
 								<i className="fas fa-bars"></i>
 							</button>
 						</div>
@@ -81,11 +94,13 @@ const Header = () => {
 					</div>
 				</div>
 
-				<div className="small-menu-area">
+				<div className={`small-menu-area${isMenuOpen? ' active' : ''}`}>
                     
-					<button className="close-small-menu-area text-end m-3 d-block">
-						<i className="fas fa-times"></i>
-					</button>
+					<div className='d-flex justify-content-end'>
+						<button className="close-small-menu-area m-3" onClick={mobileMenuTriggerClickHandler}>
+							<i className="fas fa-times"></i>
+						</button>
+					</div>
 
 					<SearchForm forMobile={true} />
 

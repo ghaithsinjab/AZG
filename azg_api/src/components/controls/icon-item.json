@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_controls_icon_items",
+  "info": {
+    "displayName": "Icon Item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
