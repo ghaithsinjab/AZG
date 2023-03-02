@@ -31,6 +31,7 @@ body{
     background-size: 20% 50%;
     animation: d3 1s infinite linear;
 }
+#root:not(:empty) + .loader-area { display: none; }
 
 @keyframes d3 {
     0% {background-position: calc(0*100%/3) 50%, calc(1*100%/3) 50%, calc(2*100%/3) 50%, calc(3*100%/3) 50%}
@@ -370,10 +371,15 @@ header .social-icon { margin: 0 10px 5px 0;}
 .careers .scale-item.about-item h3 {
     background-color: #372e2d;
     color: var(--accent-color);
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.careers .scale-item.about-item h3:hover {
+    color: #fff;
 }
 .contact-form .form input,
 .contact-form .form textarea{

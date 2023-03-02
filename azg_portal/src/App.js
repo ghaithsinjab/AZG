@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { lazy, useEffect } from "react";
+import { lazy, useEffect, Suspense } from "react";
 
 import { URL_CONFIG } from "./utils/config.utils";
 import { getCurrentNav, setSEO } from "./utils/helper.utils";
@@ -40,8 +40,8 @@ const AppUtils = {
           .toString()
           .toLowerCase()
           .replaceAll(" ", "-");
-        const componentPath = `./templates/${template}/${template}.template`;
-        const Component = require(`${componentPath}`).default;
+        const componentPath = `./templates/${template}/${template}.template.jsx`;
+        const Component = lazy(() => import(`${componentPath}`));
         const ret = (
           <Route
             path={`${URL_CONFIG.enableLanguagePrefix ? "/en" : ""}${item.path}`}
@@ -64,7 +64,6 @@ const AppUtils = {
 function App() {
   //load nav
   useNav();
-  document.getElementsByClassName("loader-area")[0]?.remove();
   const nav = useSelector(selectNav);
   const siteRoutes = AppUtils.getRoutes(nav);
   const currentNav = getCurrentNav(nav);
@@ -96,10 +95,20 @@ function App() {
         />
         <Header />
         <div className="body-content">
-          <Routes>
-            {siteRoutes}
-            <Route path="/search" element={<Search />} />
-          </Routes>
+          <Suspense
+            fallback={
+              <div className="loader-area">
+                <div className="loader-item">
+                  <div className="loader"></div>
+                </div>
+              </div>
+            }
+          >
+            <Routes>
+              {siteRoutes}
+              <Route path="/search" element={<Search />} />
+            </Routes>
+          </Suspense>
         </div>
         <Footer />
       </div>
