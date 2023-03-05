@@ -1,15 +1,19 @@
 import { useSelector } from "react-redux";
 import {useState, useEffect} from 'react';
+
+import PageBar from "../../components/layout/page-bar/page-bar.component";
+import CareerForm from "./components/career-form/career-form.component";
+import Vacancies from "./components/vacancies/vacancies.component";
+
+import { httpGetCareer } from "../../hooks/career/career.requests";
 import { selectNav } from "../../store/nav/nav.selectors";
 import { getCurrentNav } from "../../utils/helper.utils";
-import PageBar from "../../components/layout/page-bar/page-bar.component";
-import { httpGetCareer } from "../../hooks/career/career.requests";
-import Vacancies from "./components/vacancies/vacancies.component";
-import CareerForm from "./components/career-form/career-form.component";
 
 const Careers = () => {
+
     const nav = useSelector(selectNav);
     const currentNav = getCurrentNav(nav);
+    
     const [isLoading, setIsLoading] = useState(false);
     const [vacancies, setVacancies] = useState([]);
     const [selectedVacancy, setSelectedVacancy] = useState('');
@@ -33,7 +37,6 @@ const Careers = () => {
     }
 
     if (!currentNav) return (<div></div>);
-
 
     const {related} = currentNav;
     const {title, page_bar} = related;

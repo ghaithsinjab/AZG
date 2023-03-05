@@ -399,3 +399,12 @@ header .social-icon { margin: 0 10px 5px 0;}
     border-bottom-right-radius: 2rem;
     border-bottom-left-radius: 2rem;
 }
+.form-group { position: relative; }
+.form-group .error {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    top: 1rem;
+    right: 10px;
+    transform: translateY(-50%);
+}

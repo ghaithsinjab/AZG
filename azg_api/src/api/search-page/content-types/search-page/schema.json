@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "search_pages",
+  "info": {
+    "singularName": "search-page",
+    "pluralName": "search-pages",
+    "displayName": "Search Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "page_bar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

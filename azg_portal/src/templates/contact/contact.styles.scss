@@ -1,0 +1,13 @@
+.contact-form.scale-item {
+    h3 {
+        border-top-left-radius: 2rem !important;
+        border-top-right-radius: 2rem !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        cursor: inherit !important;
+
+        &:hover {
+            color: var(--accent-color) !important;
+        }
+    }
+}

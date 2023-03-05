@@ -15,4 +15,6 @@ export const SETTINGS = {
   siteName: process.env.REACT_APP_SITENAME || "",
   //the website title
   siteTitle: process.env.REACT_APP_SITETITLE || "",
+  //captcha public key
+  captcha: process.env.REACT_APP_CAPTCHA || "",
 };

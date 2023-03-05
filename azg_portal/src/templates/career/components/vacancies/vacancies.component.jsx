@@ -1,11 +1,13 @@
 import {EqualHeight, EqualHeightElement} from 'react-equal-height';
 import parse from 'html-react-parser';
 
+import './vacancies.styles.scss';
+
 const Vacancies = ({vacancies, selectJob}) => {
 
-    const selectJobHandler = (event) => {
-        const key = Number(event.target.getAttribute('data-key'));
+    const selectJobHandler = (key) => {
         key && selectJob && selectJob(key);
+        return false;
     }
 
     return (
@@ -14,16 +16,16 @@ const Vacancies = ({vacancies, selectJob}) => {
                 <EqualHeight>
                     <div className="row">                                
                         {
-                            vacancies?.map(({id, attributes}) => (
+                            vacancies?.map(({id, attributes:{title, description}}) => (
                                 <div className="col-lg-6 mb-4" key={id}>
                                     <div className="scale-item about-item mt-5">
                                         <div className="job-info">
-                                            <h4 className="mb-1">{attributes?.title}</h4>
+                                            <h4 className="mb-1">{title}</h4>
                                             <EqualHeightElement className="mb-0">
-                                                {parse(attributes?.description)}
+                                                {parse(description)}
                                             </EqualHeightElement>
                                         </div>
-                                        <h3 className="text-center fs-6" data-key={id} onClick={selectJobHandler}>
+                                        <h3 className="text-center fs-6" onClick={() => selectJobHandler(id)}>
                                             Apply for This Job
                                         </h3>
                                     </div>

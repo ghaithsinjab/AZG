@@ -11,14 +11,15 @@
   },
   "dependencies": {
     "@ckeditor/strapi-plugin-ckeditor": "^0.0.7",
-    "@strapi/plugin-i18n": "4.7.0",
-    "@strapi/plugin-users-permissions": "4.7.0",
-    "@strapi/strapi": "4.7.0",
+    "@strapi/plugin-i18n": "4.7.1",
+    "@strapi/plugin-users-permissions": "4.7.1",
+    "@strapi/strapi": "4.7.1",
     "mysql": "2.18.1",
     "react-redux": "^8.0.5",
     "react-select": "^5.7.0",
     "redux": "^4.2.1",
-    "strapi-plugin-navigation": "^2.2.4"
+    "strapi-plugin-navigation": "^2.2.4",
+    "strapi-provider-email-postmark": "^4.0.1"
   },
   "author": {
     "name": "Eng. Ghaith Sinjab"

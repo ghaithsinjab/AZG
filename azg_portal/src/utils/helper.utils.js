@@ -17,14 +17,12 @@ export const getFetch = async (url_string, data) => {
       Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
     },
   }).then((resp) => {
-    if (!resp.ok) {
-      SETTINGS.enableDebug && console.log(resp);
-      throw new Error("Network error!");
-    }
+    if (!resp.ok) SETTINGS.enableDebug && console.log(resp);
     return resp.json();
   });
   const result = await response;
-  return result;
+  if (result.error) throw new Error(result.error.message);
+  else return result;
 };
 
 /**
@@ -54,15 +52,14 @@ export const postFetch = async (url_string, data) => {
       Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
     },
     body: JSON.stringify(data),
-  }).then((resp) => {
-    if (!resp.ok) {
-      SETTINGS.enableDebug && console.log(resp);
-      throw new Error("Network error!");
-    }
-    return resp.json();
-  });
+  })
+    .then((resp) => resp.json())
+    .catch((error) => {
+      if (error.response) console.log(error);
+    });
   const result = await response;
-  return result?.data;
+  if (result.error) throw new Error(result.error.message);
+  else return result?.data;
 };
 
 /**

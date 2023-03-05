@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "career_candidates",
+  "info": {
+    "singularName": "career-candidate",
+    "pluralName": "career-candidates",
+    "displayName": "Career Candidates"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "private": true
+    },
+    "first_name": {
+      "type": "string",
+      "private": true
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "string"
+    },
+    "job_title": {
+      "type": "string"
+    },
+    "cover_letter": {
+      "type": "richtext",
+      "private": true
+    }
+  }
+}

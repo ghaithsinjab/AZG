@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
-import { selectNav } from "../../store/nav/nav.selectors";
-import { getCurrentNav } from "../../utils/helper.utils";
-import {useHomePage} from '../../hooks/home-page/home-page.hooks';
 
 import PageBar from "../../components/layout/page-bar/page-bar.component";
 import Briefs from "../../components/widgets/briefs/briefs.component";
 import Highlights from "./components/highlights/highlights.component";
 import Content from "./components/content/content.component";
 import Values from "./components/values/values.component";
+
+import {useHomePage} from '../../hooks/home-page/home-page.hooks';
+import { selectNav } from "../../store/nav/nav.selectors";
+import { getCurrentNav } from "../../utils/helper.utils";
 
 const About = () => {
     const nav = useSelector(selectNav);
