@@ -103,7 +103,11 @@ export const getCurrentNav = (nav) => {
   //return the home page nav link or the relevant nav item
   if (currentLocation === "/")
     return navLinks?.find((item) => item.page_role === "Home");
-  else return navLinks?.find((item) => item.path === currentLocation);
+  else
+    return navLinks?.find(
+      (item) =>
+        item.path === currentLocation || currentLocation.startsWith(item.path)
+    );
 };
 
 /**
@@ -251,4 +255,10 @@ export const navIsCurrent = (navItem, currentPathName) =>
 export const getNavOfType = (nav, type = "") => {
   const target = nav?.filter((item) => item.page_role === type);
   return (target && target.length === 1 && target[0]) || false;
+};
+
+export const getYouTubeId = (url) => {
+  var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  var match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : false;
 };

@@ -15,8 +15,8 @@ const Values = ({title, items}) => {
 
                 <div className="row">
                     {
-                        items?.map(({title, text}) => (
-                            <div className="col-lg-4">
+                        items?.map(({id, title, text}) => (
+                            <div className="col-lg-4" key={id}>
                                 <div className="value-item">
                                     <h2 className="accent-color">{title}</h2>
                                     <p className="text-white">{text}</p>

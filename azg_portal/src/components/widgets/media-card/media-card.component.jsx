@@ -1,8 +1,9 @@
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
+
+import { getNavOfType, getYouTubeId } from '../../../utils/helper.utils';
+import { selectNav } from '../../../store/nav/nav.selectors';
 import { URL_CONFIG } from '../../../utils/config.utils';
-import {selectNav} from '../../../store/nav/nav.selectors';
-import {getNavOfType} from '../../../utils/helper.utils';
 
 import './media-card.styles.scss';
 
@@ -11,12 +12,6 @@ const MediaCard = ({item}) => {
     const mediaNavItem = getNavOfType(nav, 'Media');
     const mediaUrl = mediaNavItem.path || '';
     const {title, url, image, youtube} = item;
-
-    const getYouTubeId = url => {
-        var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        var match = url.match(regExp);
-        return match && match[2].length === 11 ? match[2] : false;
-    }
 
     return (
         <div className={`scale-item${youtube && youtube.length ? ' video-item': ''}`}>

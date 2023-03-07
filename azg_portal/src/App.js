@@ -1,19 +1,19 @@
-import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { lazy, useEffect, Suspense } from "react";
-
-import { URL_CONFIG } from "./utils/config.utils";
-import { getCurrentNav, setSEO } from "./utils/helper.utils";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
 import Header from "./components/layout/header/header.component";
 import Footer from "./components/layout/footer/footer.component";
 
-import { useNav } from "./hooks/nav/nav.hooks";
+import { getCurrentNav, setSEO, getNavOfType } from "./utils/helper.utils";
 import { selectNav } from "./store/nav/nav.selectors";
+import { URL_CONFIG } from "./utils/config.utils";
+import { useNav } from "./hooks/nav/nav.hooks";
 
 const Home = lazy(() => import("./templates/home/home.template"));
 const Search = lazy(() => import("./templates/search/search.template"));
+const Content = lazy(() => import("./templates/content/content.template"));
 
 const AppUtils = {
   /**
@@ -66,8 +66,12 @@ function App() {
   useNav();
   const nav = useSelector(selectNav);
   const siteRoutes = AppUtils.getRoutes(nav);
+  const location = useLocation();
   const currentNav = getCurrentNav(nav);
-  currentNav && setSEO(currentNav.title);
+
+  useEffect(() => {
+    currentNav && setSEO(currentNav.title);
+  }, [location, currentNav]);
 
   //adjust body height
   const adjustHeight = () => {
@@ -84,6 +88,29 @@ function App() {
   useEffect(() => {
     adjustHeight();
   }, []);
+
+  //extra routes
+  const extraRoutes = [];
+
+  const serviceNav = getNavOfType(nav, "Services");
+  serviceNav &&
+    extraRoutes.push(
+      <Route
+        key="/service/:service"
+        path={`${serviceNav.path}/:item`}
+        element={<Content />}
+      />
+    );
+
+  const mediaNav = getNavOfType(nav, "Media");
+  mediaNav &&
+    extraRoutes.push(
+      <Route
+        key="/media/:media"
+        path={`${mediaNav.path}/:item`}
+        element={<Content />}
+      />
+    );
 
   return (
     <div className="App">
@@ -106,7 +133,8 @@ function App() {
           >
             <Routes>
               {siteRoutes}
-              <Route path="/search" element={<Search />} />
+              {extraRoutes}
+              <Route key="/search" path="/search" element={<Search />} />
             </Routes>
           </Suspense>
         </div>
